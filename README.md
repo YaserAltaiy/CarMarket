@@ -4,7 +4,7 @@ This project has been done to apply all features I learned from this course impl
 JavaScript(DOM) Python, and Database. Working on this project helps to learn a lot of new things that 
 go into building a website.
 
-The project video is: 
+The project video is: https://youtu.be/BjNu-FQfSP0
 
 ## Pages Build
 * Register page
