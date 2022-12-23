@@ -1,0 +1,96 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block title %}{{item.name}}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="{{ item.images.first.image.url }}" /></div>
+                        
+                    </div>
+                    <ul class="preview-thumbnail nav nav-tabs">
+                        {% for image in item.images.all %}
+                        <li class="clickable_image"><a  data-toggle="tab"><img src="{{image.image.url}}" /></a></li>
+                        
+                       {% endfor %}
+                    </ul>
+
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">{{ item.name }}</h3>
+
+                    <p class="product-description">{{ item.description }}</p>
+                    <h5 class="price">Price: <span>{{ item.price }} $</span></h5>
+                    <h5><b> Owner:</b> <span>{{ item.user }} </span></h5>
+                    <h5><b> Brand:</b><span>{{ item.brand }} </span></h5>
+                    <h5><b> Category:</b><span>{{ item.categories }} </span></h5>
+                    <h5><b> Mileage:</b><span>{{ item.mileage }} </span></h5>
+                    
+                    <h5><b> Color:</b>
+
+                        {{item.color}}
+                        
+                    </h5>
+                    <div><i class="fa-solid fa-phone"></i>  {{item.phoneNumber}}</div>
+                    <div><i class="fa-brands fa-facebook"></i>  {{item.social}}</div>
+                    {% if listingInWatch %}
+                    <form action="{% url 'remove' id=item.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-danger"><i class="fa-solid fa-heart"></i></button>
+                    </form>
+                    {% else %}
+                    <form action="{% url 'add' id=item.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-success"><i class="fa-regular fa-heart"></i></button>
+                    </form>
+                    {% endif %}
+                    {% if user == item.user %}
+                    <form action="{% url 'removepost' id=item.id %}" method="POST">
+                        {% csrf_token %}
+                        <button style="border: 3px; background-color: red; font-size: 15px; color: white;" class="btn">
+                            Delete
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+                <div>
+                   
+                <form action="{% url 'comment' id=item.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="myform">
+                      <input type="text" name="userComment"  required autocomplete="off" class="formInput">
+                      <label for="userComment" class="label-name">
+                        <span class="content-name">
+                            Comment
+                        </span>
+                      </label>
+                    </div>
+                      <button type="submit" class="btn btn-secondary" style="background-color: #1A0B5B; outline: none;">Comment</button>
+                    
+                </form>
+                </div>
+                {% for comment in allComments %}
+                <p><b>{{comment.user}}: {{comment.comment}}</b></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

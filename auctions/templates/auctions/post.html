@@ -1,0 +1,127 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block title %}New Post{% endblock %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Odor+Mean+Chey&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+<section>
+  <div>
+    <div class="col-md-12 mb-4 d-flex justify-content-center">
+      <div class="card mb-4 col-7">
+        <div class="card-header py-3 d-flex justify-content-center">
+          <h4 class="mb-0" style="text-transform: uppercase;"><b>New Post</b></h4>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'save' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="form-outline mb-4">
+              <label class="form-check-label" for="sec1"><b> Brand</b></label>
+              <select name="brand" id="sec1" class="form-select" aria-label="Default select example">
+                <option selected disabled hidden>Brand</option>
+                {% for brand in brands %}
+                <option value="{{brand.brand}}">{{brand.brand}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form6Example3"><b>Car name</b></label>
+              <input name="carName" type="text" id="form6Example3" class="form-control" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-check-label" for="sec1"><b> Model</b></label>
+              <select name="model" id="sec1" class="form-select" aria-label="Default select example">
+                <option selected disabled hidden>Model</option>
+                {% for model in models %}
+                <option value="{{model.year}}">{{model.year}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-check-label" for="sec2"><b>Color</b></label>
+              <select name="color" id="sec2" class="form-select" aria-label="Default select example">
+                <option selected disabled hidden>Color</option>
+                {% for color in colors %}
+                <option value="{{color.color}}">{{color.color}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+
+            <div class="form-outline mb-4">
+              <label class="form-check-label" for="sec2"><b>Category</b></label>
+              <select name="category" id="sec2" class="form-select" aria-label="Default select example">
+                <option selected disabled hidden>Category</option>
+                {% for cate in category %}
+                <option value="{{cate.name}}">{{cate.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-check-label" for="sec2"><b>Mileage</b></label>
+              <select name="mileage" id="sec2" class="form-select" aria-label="Default select example">
+                <option selected disabled hidden>Mileage</option>
+                {% for item in mileage%}
+                <option value="{{item.mileage}}">{{item.mileage}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form6Example3"><b>Phone Number</b></label>
+              <input name="phone" type="text" id="form6Example3" class="form-control" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form6Example3"><b>Facebook username</b></label>
+              <input name="facebook" type="text" id="form6Example3" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"><b>Description</b></label>
+              <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+
+            <label class="form-check-label " for="sec3"><b>Price</b></label>
+
+            <div id="sec3" class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input name="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text">.00</span>
+            </div>
+
+            <div class="mb-3">
+              <label for="formFileMultiple" class="form-label"><b> Images</b></label>
+              <input name="image" class="form-control" type="file" id="formFileMultiple" multiple>
+            </div>
+
+
+            <button class="btn post-button btn-lg btn-block" type="submit">
+              Post
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+<!-- Credit card form -->
+
+
+<script src="main2.js"></script>
+{% endblock %}

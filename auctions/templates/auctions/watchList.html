@@ -1,0 +1,57 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<script src="https://kit.fontawesome.com/4d0169ec99.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+
+
+<h1 class="d-flex justify-content-center" style="padding-top: 20px;">Your Favorites</h1>
+<div class="container mb-5">
+    
+    <div class="row g-1" style="margin-top:40px">
+        {% for item in data %}
+        <div class="col-md-4 p-2">
+            
+            <a href="{% url 'display' item.id %}" style="text-decoration: none;">
+            <div class="p-card car-card">
+                <div class="p-carousel">
+                    <div class="carousel slide" data-ride="carousel" id="carousel-1">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active"><img class="w-100 d-block" src="{{ item.images.first.image.url }}" alt="Slide Image" style="height:350px;"></div>
+                           
+                        </div>
+                       
+                        
+                    </div>
+                </div>
+                <div class="p-details car-details">
+                    <div class="d-flex justify-content-between align-items-center mx-2">
+                        <h5>{{ item.name }}</h5><span>{{ item.price }} $</span></div>
+                    <div class="mx-2">
+                        <hr class="line">
+                    </div>
+                    <div class="d-flex justify-content-between mt-2 spec mx-2">
+                        <div class="d-flex flex-column align-items-center">
+                            <h6 class="mb-0">Brand</h6><span>{{ item.brand }}</span></div>
+                        <div class="d-flex flex-column align-items-center">
+                            <h6 class="mb-0">Color</h6><span>{{ item.color }}</span></div>
+                        <div class="d-flex flex-column align-items-center">
+                            <h6 class="mb-0">Model</h6><span>{{ item.model }}</span></div>
+                    </div>
+                    <div class="buy mt-3"><button class="btn btn-outline-dark btn-block" type="button" style="width:100%;">View Post</button></div>
+                </div>
+            </div>
+        </a>
+        
+        </div>
+        {% endfor %}
+        
+    </div>
+   
+</div>
+{% endblock %}

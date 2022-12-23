@@ -1,0 +1,76 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block title %}CarWash{% endblock %}
+
+{% block head %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="stylesheet" href="{% static 'carwashing.css' %}">
+{% endblock %}
+
+{% block body %}
+
+
+<p id="demo" hidden></p>
+<div id="map" style="height: 400px; width: 98%; margin-top: 10px; margin-left: 1%; border-radius: 30px; border: 2px solid brown;"></div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTP_VmiI-UFPa2i0yyqmCyajGWEcvGOAU&callback=getLocation">
+</script>
+
+<form action="" method="POST">{% csrf_token %}
+    <div class="btn-0"><input type="button" value="get all locations" onclick="toShowLocations()" class="btn-1"></div><br>
+
+
+    <section>
+        <div>
+          <div class="col-md-12 mb-4 d-flex justify-content-center">
+            <div class="card mb-4 col-7">
+              <div class="card-header py-3 d-flex justify-content-center">
+                <h4 class="mb-0" style="text-transform: uppercase;"><b>New Carwash Location</b></h4>
+              </div>
+              <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+                  <div class="form-outline mb-4">
+                    <label class="form-check-label"><b> *Hint : if you write only the name it will take your current location</b></label>
+                  </div>
+      
+                  <div class="form-outline mb-4">
+                    <label class="form-label" ><b>Carwash Name </b></label>
+                    <input type="text" id="title" class="form-control" />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" ><b>Latitude</b></label>
+                    <input type="text" id="lat" class="form-control" />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" ><b>Longitude</b></label>
+                    <input type="text" id="long" class="form-control" />
+                  </div>
+
+
+                  <button class="btn post-button btn-lg btn-block" type="submit" onclick="toStoreLocation()">
+                    Add
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+      
+      
+        </div>
+      </section>
+      <!-- Credit card form -->
+
+
+    <!-- name : <input type="text" id="title"><br>
+    Latitude : <input type="text" id="lat"><br>
+    Longitude : <input type="text" id="long"><br>
+    <input type="button" value="input" onclick="toStoreLocation()"><br> -->
+</form>
+
+<script src="{% static 'carwashing.js' %}"></script> 
+{% endblock %}
