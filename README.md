@@ -49,31 +49,31 @@ The webite has been designed with figma, and the design then has been implemente
 
 ## Files information
 * In views.py there is all of the backend code. The main functions are:
- - index with all the posts obtained from the database.
- - search for searching about details in the posts we want.
- - login, logout and register for user.
- - mypost for showing all my posts.
- - newpost to show newpost page.
- - save and removepost to post a new post or remove my post.
- - display to display the post.
- - watchlist, add and remove to see your watchlist, add to and remove.
- - comment to add comment on post.
- - getlocations to see all CarWashing location on map.
- - savelocation to add new location.
- - contact to contact the page admin.
+   - index with all the posts obtained from the database.
+   - search for searching about details in the posts we want.
+   - login, logout and register for user.
+   - mypost for showing all my posts.
+   - newpost to show newpost page.
+   - save and removepost to post a new post or remove my post.
+   - display to display the post.
+   - watchlist, add and remove to see your watchlist, add to and remove.
+   - comment to add comment on post.
+   - getlocations to see all CarWashing location on map.
+   - savelocation to add new location.
+   - contact to contact the page admin.
 
 * Models.py The different models are:
- - CustomUser
- - Category
- - Brand
- - Mileage
- - Model
- - Color
- - PostImages
- - Post
- - Location
- - Comment
- - Contact
+   - CustomUser
+   - Category
+   - Brand
+   - Mileage
+   - Model
+   - Color
+   - PostImages
+   - Post
+   - Location
+   - Comment
+   - Contact
 
 * Templates for all of the different html pages
 * CSS file for the theme and common clases.
