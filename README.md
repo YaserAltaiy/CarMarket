@@ -61,6 +61,7 @@ The webite has been designed with figma, and the design then has been implemente
  - getlocations to see all CarWashing location on map.
  - savelocation to add new location.
  - contact to contact the page admin.
+
 * Models.py The different models are:
  - CustomUser
  - Category
@@ -73,6 +74,7 @@ The webite has been designed with figma, and the design then has been implemente
  - Location
  - Comment
  - Contact
+
 * Templates for all of the different html pages
 * CSS file for the theme and common clases.
 * Other files like urls, admin, settings…
