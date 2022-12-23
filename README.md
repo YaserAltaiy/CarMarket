@@ -35,17 +35,27 @@ The project video is:
 * Models (database)
 
 ## Distinctiveness and Complexity
-- he home page has a lot of features when we click on the user icon in the navbar , it will move us to login page.
-- from login page we can go to register page if we don't have account.
-- there is search box for searching about details in the posts we want.
-- any user can add new post and he is only how can delete it.
-- any user can write comment on the posts.
-- you can see all CarWashing locations near by you, and you can add new one if you have.
-- you can add the posts you want to WatchList or remove from WatchList.
-- user can contact us by sending a message.
-- In terms of complexity, I used Django with more than one model and javascript file to the frontend.
-- Moreover, all of the website is responsive to the different screen sizes (mainly mobile phones and computers).
-- The webite has been designed with figma, and the design then has been implemented with html, css, js, and bootstrap.
+he home page has a lot of features when we click on the user icon in the navbar , it will move us to login page.
+
+from login page we can go to register page if we don't have account.
+
+there is search box for searching about details in the posts we want.
+
+any user can add new post and he is only how can delete it.
+
+any user can write comment on the posts.
+
+you can see all CarWashing locations near by you, and you can add new one if you have.
+
+you can add the posts you want to WatchList or remove from WatchList.
+
+user can contact us by sending a message.
+
+In terms of complexity, I used Django with more than one model and javascript file to the frontend.
+
+Moreover, all of the website is responsive to the different screen sizes (mainly mobile phones and computers).
+
+The webite has been designed with figma, and the design then has been implemented with html, css, js, and bootstrap.
 
 ## Files information
 * In views.py there is all of the backend code. The main functions are:
